@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ludo Moves</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function App() {
+      const [moves, setMoves] = React.useState({
+        blue: 0,
+        red: 0,
+        yellow: 0,
+        green: 0
+      });
+
+      function incMove(color) {
+        setMoves(prev => ({
+          ...prev,
+          [color]: prev[color] + 1
+        }));
+      }
+
+      return (
+        <>
+          <p>Blue Moves: {moves.blue}</p>
+          <button style={{ backgroundColor: "blue", color: "white" }} onClick={() => incMove("blue")}>+1</button>
+
+          <p>Red Moves: {moves.red}</p>
+          <button style={{ backgroundColor: "red", color: "white" }} onClick={() => incMove("red")}>+1</button>
+
+          <p>Yellow Moves: {moves.yellow}</p>
+          <button style={{ backgroundColor: "gold", color: "black" }} onClick={() => incMove("yellow")}>+1</button>
+
+          <p>Green Moves: {moves.green}</p>
+          <button style={{ backgroundColor: "green", color: "white" }} onClick={() => incMove("green")}>+1</button>
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
